@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: make-line
+  namespace: make-line
+spec:
+  selector:
+    app: make-line
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http

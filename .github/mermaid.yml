@@ -1,0 +1,12 @@
+# Mermaid configuration for GitHub
+# This enables Mermaid diagram rendering in markdown files
+
+mermaid:
+  theme: default
+  themeVariables:
+    primaryColor: '#f9f'
+    primaryTextColor: '#333'
+    primaryBorderColor: '#333'
+    lineColor: '#333'
+    secondaryColor: '#bbf'
+    tertiaryColor: '#dfd'

@@ -1,0 +1,139 @@
+apiVersion: goa.com/v1
+kind: Cluster
+metadata:
+  labels:
+    city: Buda
+    county: Hays
+    region: Central
+    ring: '1'
+    state: TX
+    type: store
+  name: tx-buda
+spec:
+  metadata:
+    city: Buda
+    county: Hays
+    description: TX Buda
+    areaCode: 512
+    latitude: 30.08
+    oven: ACME3000
+    longitude: -97.83
+    population: 43790
+    region: Central
+    ring: 1
+    state: TX
+    storeNumber: 78610
+    timezone: America/Chicago
+    type: store
+---
+apiVersion: goa.com/v1
+kind: Cluster
+metadata:
+  labels:
+    city: Burnet
+    county: Burnet
+    region: Central
+    ring: '1'
+    state: TX
+    type: store
+  name: tx-burnet
+spec:
+  metadata:
+    city: Buda
+    county: Hays
+    description: TX Buda
+    areaCode: 325
+    latitude: 30.76
+    oven: ACME4000
+    longitude: -98.22
+    population: 13540
+    region: Central
+    ring: 1
+    state: TX
+    storeNumber: 78611
+    timezone: America/Chicago
+    type: store
+---
+apiVersion: goa.com/v1
+kind: Cluster
+metadata:
+  labels:
+    city: Cedar-Creek
+    county: Bastrop
+    region: Central
+    ring: '1'
+    state: TX
+    type: store
+  name: tx-cedar-creek
+spec:
+  metadata:
+    city: Cedar Creek
+    county: Bastrop
+    description: TX Cedar Creek
+    areaCode: 512
+    latitude: 30.08
+    oven: ACME4000
+    longitude: -97.5
+    population: 15730
+    region: Central
+    ring: 1
+    state: TX
+    storeNumber: 78612
+    timezone: America/Chicago
+    type: store
+---
+apiVersion: goa.com/v1
+kind: Cluster
+metadata:
+  name: tx-hutto
+  labels:
+    type: store
+    region: Central
+    state: TX
+    ring: "1"
+    county: Williamson
+    city: Hutto
+spec:
+  metadata:
+    type: store
+    ring: 1
+    storeNumber: 78634
+    timezone: America/Chicago
+    region: Central
+    state: TX
+    county: Williamson
+    city: Hutto
+    description: TX Hutto
+    areaCode: 512
+    population: 39190
+    oven: ACME3000
+    latitude: 30.54
+    longitude: -97.54
+---
+apiVersion: goa.com/v1
+kind: Cluster
+metadata:
+  name: tx-kyle
+  labels:
+    type: store
+    region: Central
+    state: TX
+    ring: "1"
+    county: Hays
+    city: Kyle
+spec:
+  metadata:
+    type: store
+    ring: 1
+    storeNumber: 78640
+    timezone: America/Chicago
+    region: Central
+    state: TX
+    county: Hays
+    city: Kyle
+    description: TX Kyle
+    areaCode: 512
+    population: 63500
+    oven: ACME3000
+    latitude: 29.99
+    longitude: -97.87

@@ -1,0 +1,52 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: clusters.goa.com
+spec:
+  group: goa.com
+  scope: Namespaced
+  names:
+    plural: clusters
+    singular: cluster
+    kind: Cluster
+    shortNames:
+      - cl
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          apiVersion:
+            type: string
+          kind:
+            type: string
+          metadata:
+            type: object
+          spec:
+            type: object
+            properties:
+              metadata:
+                type: object
+                additionalProperties: true
+    additionalPrinterColumns:
+    - jsonPath: .spec.metadata.region
+      name: Region
+      type: string
+    - jsonPath: .spec.metadata.state
+      name: State
+      type: string
+    - jsonPath: .spec.metadata.county
+      name: County
+      type: string
+    - jsonPath: .spec.metadata.city
+      name: City
+      type: string
+    - jsonPath: .spec.metadata.storeNumber
+      name: StoreNumber
+      type: string
+    - jsonPath: .spec.metadata.ring
+      name: Ring
+      type: integer
