@@ -5,6 +5,8 @@ metadata:
   namespace: pos
   labels:
     app.kubernetes.io/name: pos
+    goa.name: goa.cluster.name
+    goa.ring: "goa.cluster.ring"
 spec:
   replicas: 1
   strategy:

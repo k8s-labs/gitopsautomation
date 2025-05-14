@@ -5,6 +5,8 @@ metadata:
   namespace: heartbeat
   labels:
     app.kubernetes.io/name: heartbeat
+    goa.name: tx-cedar-creek
+    goa.ring: "1"
 spec:
   replicas: 1
   strategy:

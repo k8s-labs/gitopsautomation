@@ -8,7 +8,9 @@ metadata:
     version: v0.4.0
 
 resources:
-- ../../base
+- ../../base/ns.yaml
+- ../../base/service.yaml
+- deployment.yaml
 
 images:
 - name: ghcr.io/bartr/pos

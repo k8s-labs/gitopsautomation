@@ -5,6 +5,8 @@ metadata:
   namespace: make-line
   labels:
     app.kubernetes.io/name: make-line
+    goa.name: tx-round-rock
+    goa.ring: "0"
 spec:
   replicas: 1
   strategy:
