@@ -4,7 +4,7 @@ metadata:
   name: pos
   namespace: pos
   annotations:
-    expression: /m/ring/0
+    #expression: /m/ring/0
     version: v0.4.0
 
 resources:
