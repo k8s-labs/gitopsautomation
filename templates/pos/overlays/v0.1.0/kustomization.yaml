@@ -3,9 +3,6 @@ kind: Kustomization
 metadata:
   name: pos
   namespace: pos
-  annotations:
-    #expression: /c/*
-    version: v0.1.0
 
 resources:
 - ../../base

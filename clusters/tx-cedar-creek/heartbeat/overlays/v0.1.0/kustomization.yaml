@@ -3,12 +3,9 @@ kind: Kustomization
 metadata:
   name: heartbeat
   namespace: heartbeat
-  annotations:
-    version: v0.1.0
-    expression: /c/*
 
 resources:
-- ../../base
+  - ../../base
 
 images:
 - name: ghcr.io/bartr/heartbeat
