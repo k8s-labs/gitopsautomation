@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: make-line
-  namespace: make-line
+  name: timeclock
+  namespace: timeclock
   labels:
-    app.kubernetes.io/name: make-line
+    app.kubernetes.io/name: timeclock
     goa.name: goa.cluster.name
     goa.ring: "goa.cluster.ring"
 spec:
@@ -16,11 +16,11 @@ spec:
        maxUnavailable: 1
   selector:
     matchLabels:
-      app: make-line
+      app: timeclock
   template:
     metadata:
       labels:
-        app: make-line
+        app: timeclock
     spec:
       containers:
         - name: app
@@ -28,14 +28,14 @@ spec:
           imagePullPolicy: Always
           args:
             - -u
-            - make-line
+            - timeclock
           ports:
             - name: http
               containerPort: 8080
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /make-line/healthz
+              path: /timeclock/healthz
               port: http
             initialDelaySeconds: 5
             failureThreshold: 10

@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: make-line
-  namespace: make-line
+  name: timeclock
+  namespace: timeclock
 spec:
   selector:
-    app: make-line
+    app: timeclock
   type: ClusterIP
   ports:
     - port: 8080
