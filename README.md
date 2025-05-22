@@ -187,25 +187,6 @@ This repository uses Arc enabled GitOps (Flux) for GitOps implementation, which:
 - Maintains the desired state of all store environments
 - Provides audit trail of all changes
 
-## Repository Structure
-
-```
-.
-├── apps/                 # Kubernetes manifest templates
-│   ├── pos/              # Point of Sale system
-│   ├── ingress-nginx/    # Ingress controller
-│   ├── heartbeat/        # Health monitoring
-│   └── cert-manager/     # SSL/TLS certificate management
-├── clusters/             # Generated cluster configurations
-│   ├── tx-austin/        # Austin store cluster
-│   ├── tx-round-rock/    # Round Rock store cluster
-│   ├── tx-pflugerville/  # Pflugerville store cluster
-│   └── ...               # Other store clusters (20 total stores)
-└── config/               # Configuration data
-    ├── clusters.yaml     # Cluster definitions and metadata
-    └── crds.yaml         # Custom Resource Definitions for validation
-```
-
 ## Getting Started
 
 ### Prerequisites
@@ -214,17 +195,81 @@ This repository uses Arc enabled GitOps (Flux) for GitOps implementation, which:
 - kubectl configured
 
 ### Deployment
-1. Clone this repository
-2. Configure Flux CD for your cluster
-3. Apply the cluster-specific configurations
-4. Monitor the deployment through Flux CD
+- Clone this repository
+- Install GitOps Automation CLI
+
+```bash
+
+# uninstall if necessary
+dotnet tool uninstall -g GitOpsAutomation
+
+# install the latest version
+# (version '0.4.0')
+dotnet tool install -g GitOpsAutomation
+
+```
+
+- Configure Arc enabled GitOps for your cluster
+
+```bash
+
+# change to your resource group
+export ARC_RG=arc
+
+# use any name from the clusters config directory
+export ARC_NAME=tx-austin
+
+# make sure that PAT is set to a valid GitHub Personal Access Token with permissions to the repository
+echo $PAT
+
+# create flux and kustomization
+az k8s-configuration flux create \
+  --url https://github.com/bartr/tlt \
+  --https-key $PAT \
+  --cluster-name $ARC_NAME \
+  --resource-group $ARC_RG \
+  --cluster-type connectedClusters \
+  --interval 1m \
+  --kind git \
+  --name gitops \
+  --namespace flux-system \
+  --scope cluster \
+  --timeout 3m \
+  --https-user gitops \
+  --branch main \
+  --kustomization \
+      name=flux-listeners \
+      path=./clusters/$ARC_NAME/flux-system/listeners \
+      timeout=3m \
+      sync_interval=1m \
+      retry_interval=1m \
+      prune=true \
+      force=true
+
+```
+
+- Apply the cluster-specific configurations
+
+```bash
+
+# update the yaml files in the config directory if desired
+
+goa gen
+
+git add .
+git commit -am "updated GitOps"
+git push
+
+```
+
+- Monitor the deployment through Arc
 
 ## Contributing
-1. Create a new branch for your changes
-2. Make your changes
-3. Submit a pull request
-4. Ensure all tests pass
-5. Get approval from maintainers
+- Create a new branch for your changes
+- Make your changes
+- Submit a pull request
+- Ensure all tests pass
+- Get approval from maintainers
 
 ## Security
 - Access to the repository is restricted
@@ -232,8 +277,3 @@ This repository uses Arc enabled GitOps (Flux) for GitOps implementation, which:
 
 ## Support
 For support, please create an issue in this repository
-
-<div align="center">
-    Powered by: Firefly Nixie<br>
-    <img src="images/nixie.png" alt="Powered by: Firefly Nixie" height="120">
-</div>
