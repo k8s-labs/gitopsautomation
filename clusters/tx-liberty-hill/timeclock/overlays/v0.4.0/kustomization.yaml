@@ -5,9 +5,10 @@ metadata:
   namespace: timeclock
 
 resources:
-- ../../base/ns.yaml
-- ../../base/service.yaml
-- deployment.yaml
+  - ../../base
+
+patchesStrategicMerge:
+  - patch.yaml
 
 images:
 - name: ghcr.io/bartr/heartbeat
