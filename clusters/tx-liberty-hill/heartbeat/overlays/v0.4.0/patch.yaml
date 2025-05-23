@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heartbeat
+  namespace: heartbeat
+spec:
+  template:
+    spec:
+      containers:
+        - name: app
+          image: ghcr.io/bartr/heartbeat:0.4.0
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /heartbeat/healthz

@@ -26,6 +26,9 @@ spec:
         - name: app
           image: ghcr.io/bartr/heartbeat:0.1.0
           imagePullPolicy: Always
+          args:
+          - -u
+          - timeclock
           ports:
             - name: http
               containerPort: 8080
