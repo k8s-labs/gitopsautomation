@@ -23,9 +23,11 @@ spec:
         app: pos
     spec:
       containers:
-        - name: app
           image: ghcr.io/bartr/pos:0.1.0
           imagePullPolicy: Always
+          args:
+          - -u
+          - pos
           ports:
             - name: http
               containerPort: 8080

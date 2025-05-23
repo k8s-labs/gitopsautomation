@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pos
+  namespace: pos
+spec:
+  template:
+    spec:
+      containers:
+        - name: app
+          image: ghcr.io/bartr/pos:0.4.0
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /pos/healthz
