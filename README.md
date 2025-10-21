@@ -4,19 +4,9 @@ This repository contains the GitOps configurations for managing Kubernetes clust
 
 ## Configuration Management
 
-### Custom Resource Definitions (CRDs)
+### Clusters YAML Files
 
-The repository uses Custom Resource Definitions (CRDs) to define the structure and validation rules for clusters. CRDs extend the Kubernetes API by defining new, custom resource types that can be managed like built-in Kubernetes objects.
-
-For more information on CRDs, see the [Kubernetes documentation on Custom Resources](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
-
-The following CRDs are defined in `config/crds.yaml`:
-
-- **Cluster CRD**: Defines the structure for cluster configurations in `clusters.yaml`
-  - Specifies metadata, networking, and infrastructure details for each retail store cluster
-  - Validates cluster-specific configuration parameters
-
-Sample configurations in these YAML files conform to their respective CRD specifications, ensuring consistent and validated configurations across the GitOps workflow.
+The `config/clusters*.yaml` files define the Kubernetes clusters representing each retail store location. Each cluster entry includes metadata such as name, location, type, and custom labels that can be used for deployment targeting. The clusters are grouped into multiple files for better organization and scalability.
 
 ### Cluster and Application Versioning
 
